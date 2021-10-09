@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    https://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+    <bean name="zhangeaky" class="com.alipay.workspace.di.pojo.Person" primary="false">
+        <property name="age" value="18"></property>
+        <property name="name" value="zheangky"></property>
+        <property name="school" value="ZJUT"></property>
+    </bean>
+
+    <bean name="objectBean" class="org.springframework.beans.factory.config.ObjectFactoryCreatingFactoryBean" scope="singleton">
+        <property name="targetBeanName" value="zhangeaky"></property>
+    </bean>
+
+    <bean name="xiamage" class="com.alipay.workspace.di.pojo.Person" primary="true">
+        <property name="name" value="xiaomage"></property>
+        <property name="age" value="37"></property>
+        <property name="school" value="csu"></property>
+    </bean>
+
+    <bean name="vip" class="com.alipay.workspace.di.pojo.vip" parent="xiamage">
+        <property name="vipInfo" value="浙江杭州"></property>
+    </bean>
+
+    <context:component-scan base-package="com.alipay.workspace.di.pojo"></context:component-scan>
+
+</beans>
